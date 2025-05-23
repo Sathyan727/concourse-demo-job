@@ -28,7 +28,7 @@ jobs:
         - -c
         - |
           apk add --no-cache python3 py3-pip
-          python3 -m pip install --user ansible
+          pip3 install --user --break-system-packages ansible
           export PATH="$PATH:~/.local/bin"
           ansible-playbook --version || { echo "Ansible installation failed"; exit 1; }
           packer plugins install github.com/hashicorp/amazon

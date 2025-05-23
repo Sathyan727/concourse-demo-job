@@ -11,8 +11,6 @@ jobs:
   - get: project-code
     trigger: true
   - task: validate--build-packer
-    vars:
-      ssh-private-key: ((ssh-private-key))
     config:
       platform: linux
       image_resource:

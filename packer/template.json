@@ -21,7 +21,8 @@
   "provisioners": [
     {
       "type": "ansible",
-      "playbook_file": "project-code/packer/playbook.yml"
+      "playbook_file": "project-code/packer/playbook.yml",
+      "remote_tmp": "/tmp/"
     }
   ]
 }

@@ -19,12 +19,18 @@
     }
   ],
   "provisioners": [
+{
+  "type": "shell",
+  "inline": [
+    "sudo amazon-linux-extras install python3.8"
+  ]
+},
     {
       "type": "ansible",
       "playbook_file": "project-code/packer/playbook.yml",
       "extra_arguments": [
         "-e ansible_remote_tmp=/tmp",
-        "-e ansible_python_interpreter=/usr/bin/python3",
+        "-e ansible_python_interpreter=/usr/bin/python3.8",
         "-vvv"
       ]
     }

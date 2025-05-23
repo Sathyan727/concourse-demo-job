@@ -22,7 +22,7 @@
 {
   "type": "shell",
   "inline": [
-    "sudo yum install -y python38",
+    "sudo amazon-linux-extras install python3.8 -y",
     "sudo alternatives --set python3 /usr/bin/python3.8",
     "sudo ln -sf /usr/bin/python3.8 /usr/bin/python3"
   ],
@@ -33,6 +33,7 @@
       "playbook_file": "project-code/packer/playbook.yml",
       "extra_arguments": [
         "-e ansible_remote_tmp=/tmp",
+        "-e ansible_python_interpreter=/usr/bin/python3.8",
         "-vvv"
       ]
     }

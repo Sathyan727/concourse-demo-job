@@ -27,6 +27,7 @@ jobs:
         - |
           cd project-code/packer
           packer init
+          packer plugins install github.com/hashicorp/amazon
           packer validate template.json
   - task: build-ami
     config:

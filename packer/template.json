@@ -1,8 +1,7 @@
 {
   "variables":{
     "access_key": "{{user `aws_access_key`}}",
-    "secret_key": "{{user `aws_secret_key`}}",
-     "ssh_private_key": "{{user `ssh_private_key`}}"
+    "secret_key": "{{user `aws_secret_key`}}"
    },
   "builders": [
     {
@@ -11,7 +10,8 @@
       "source_ami": "ami-0e58b56aa4d64231b",
       "instance_type": "t2.micro",
       "ssh_username": "ec2-user",
-      "ssh_private_key": "{{user `ssh_private_key`}}",
+       "ssh_keypair_name": "mykpar",
+      "ssh_private_key_file" : "/tmp/mykpar.pem",
       "ami_name":"packer-ansible-python-demo-{{timestamp}}",
       "access_key": "{{user `aws_access_key`}}",
       "secret_key": "{{user `aws_secret_key`}}"

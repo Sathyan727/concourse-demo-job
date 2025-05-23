@@ -2,8 +2,8 @@ resources:
 - name: project-code
   type: git
   source:
-    uri: file:///home/vboxuser/concourse-project
-    branch: master
+    uri: https://github.com/Sathyan727/concourse-demo-job.git
+    branch: main
  
 jobs:
 - name: build-ami

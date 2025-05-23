@@ -29,7 +29,7 @@ jobs:
         - |
           apk add --no-cache python3 py3-pip
           pip3 install --user --break-system-packages ansible
-          export PATH="$PATH:~/.local/bin"
+          export PATH="$PATH:/root/.local/bin"
           ansible-playbook --version || { echo "Ansible installation failed"; exit 1; }
           packer plugins install github.com/hashicorp/amazon
           packer plugins install github.com/hashicorp/ansible

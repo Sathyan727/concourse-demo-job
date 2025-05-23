@@ -22,10 +22,7 @@
 {
       "type": "shell",
       "inline": [
-        "echo {{user `ssh_private_key`}} | base64 -d > /tmp/temp-key.pem",
-        "chmod 400 /tmp/temp-key.pem",
         "ANSIBLE_REMOTE_TMP=/tmp/.ansible/tmp /root/.local/bin/ansible-playbook -i 'localhost,' --connection=local -u {{user `ssh_username`}} /packer-source/project-code/playbook.yml",
-        "rm -f /tmp/temp-key.pem"
       ]
     }
   ]

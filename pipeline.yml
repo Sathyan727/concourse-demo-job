@@ -26,6 +26,7 @@ jobs:
         - -c
         - |
           packer plugins install github.com/hashicorp/amazon
+          packer plugins install github.com/hashicorp/ansible
           packer validate project-code/packer/template.json
   - task: build-ami
     config:

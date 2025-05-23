@@ -1,7 +1,7 @@
 {
   "variables":{
-    "aws_access_key": "{{user `aws_access_key`}}",
-    "aws_secret_key": "{{user `aws_secret_key`}}"
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}"
    },
   "builders": [
     {
@@ -13,8 +13,8 @@
       "ssh_keypair_name": "mykpar",
       "ssh_agent_auth": true,
       "ami_name": "packer-ansible-python-demo-{{timestamp}}",
-      "aws_access_key": "{{user `aws_access_key`}}",
-      "aws_secret_key": "{{user `aws_secret_key`}}"
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}"
     }
   ],
   "provisioners": [

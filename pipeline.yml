@@ -22,6 +22,9 @@ jobs:
           tag: latest
       inputs:
       - name: project-code
+      params:
+  	AWS_ACCESS_KEY: ((aws_access_key))
+  	AWS_SECRET_KEY: ((aws_secret_key))
       run:
         path: sh
         args:
@@ -33,8 +36,8 @@ jobs:
           ansible-playbook --version || { echo "Ansible installation failed"; exit 1; }
           packer plugins install github.com/hashicorp/amazon
           packer plugins install github.com/hashicorp/ansible
-          packer validate -var "ssh-private-key=$SSH_PRIVATE_KEY" project-code/packer/template.json
-          packer build -var "ssh-private-key=$SSH_PRIVATE_KEY" project-code/packer/template.json
+          packer validate -var "aws_access_key=$AWS_ACCESS_KEY" --var "aws_secret_key=$AWS_SECRET_KEY" project-code/packer/template.json
+          packer build -var "aws_access_key=$AWS_ACCESS_KEY" --var "aws_secret_key=$AWS_SECRET_KEY" project-code/packer/template.json
 - name: provision-infra
   plan:
   - get: project-code
@@ -79,6 +82,5 @@ jobs:
         - |
           cd project-code/terraform
           terraform apply -auto-approve
-params:
-  SSH_PRIVATE_KEY: ((ssh-private-key))
+
  

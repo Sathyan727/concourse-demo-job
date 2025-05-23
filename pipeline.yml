@@ -26,6 +26,7 @@ jobs:
         - -exc
         - |
           cd project-code/packer
+          packer init
           packer validate template.json
   - task: build-ami
     config:

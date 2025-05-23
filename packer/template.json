@@ -1,0 +1,20 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-east-1",
+      "source_ami": "ami-0e58b56aa4d64231b",
+      "instance_type": "t2.micro",
+      "ssh_username": "ec2-user",
+      "ssh_keypair_name": "mykpar",
+      "ssh_private_key_file": "/media/sf_SHARED_FOLDER/mykpar.pem",
+      "ami_name": "packer-ansible-python-demo-{{timestamp}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "playbook.yml",
+    }
+  ]
+}

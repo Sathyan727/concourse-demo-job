@@ -7,14 +7,15 @@
       "instance_type": "t2.micro",
       "ssh_username": "ec2-user",
       "ssh_keypair_name": "mykpar",
-      "ssh_private_key_file": "{{user `ssh-private-key`}}",
+      "ssh_agent_auth": true,
       "ami_name": "packer-ansible-python-demo-{{timestamp}}"
     }
   ],
   "provisioners": [
     {
       "type": "ansible",
-      "playbook_file": "playbook.yml"
+      "playbook_file": "playbook.yml",
+      "extra_arguments": ["--private-key", "/media/sf_SHARED_FOLDER/mykpar.pem", "--user", "{{user `ssh_username`}}"]
     }
   ]
 }

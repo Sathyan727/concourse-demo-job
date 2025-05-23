@@ -25,7 +25,7 @@ jobs:
       params:
         AWS_ACCESS_KEY: ((aws_access_key))
         AWS_SECRET_KEY: ((aws_secret_key))
-        SSH_PRIVATE_KEY: ((ssh_private_key)),
+        SSH_PRIVATE_KEY: ((ssh_private_key))
       run:
         path: sh
         args:

@@ -2,7 +2,7 @@
   "variables":{
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
-     "ssh_private_key": "{{user `ssh_private_key`}},
+     "ssh_private_key": "{{user `ssh_private_key`}}
    },
   "builders": [
     {
@@ -20,8 +20,7 @@
   "provisioners": [
     {
       "type": "ansible",
-      "playbook_file": "project-code/packer/playbook.yml",
-      "extra_arguments": ["--private-key", "/media/sf_SHARED_FOLDER/mykpar.pem", "--user", "{{user `ssh_username`}}"]
+      "playbook_file": "project-code/packer/playbook.yml"
     }
   ]
 }

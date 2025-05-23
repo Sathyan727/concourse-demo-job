@@ -22,9 +22,9 @@
 {
   "type": "shell",
   "inline": [
-    "sudo amazon-linux-extras install python3.8 -y",
-    "sudo alternatives --set python3 /usr/bin/python3.8",
-    "sudo ln -sf /usr/bin/python3.8 /usr/bin/python3"
+    "sudo amazon-linux-extras install python3.9 -y",
+    "sudo alternatives --set python3 /usr/bin/python3.9",
+    "sudo ln -sf /usr/bin/python3.9 /usr/bin/python3"
   ],
   "execute_command": "sudo {{.Path}}"
 },
@@ -33,7 +33,7 @@
       "playbook_file": "project-code/packer/playbook.yml",
       "extra_arguments": [
         "-e ansible_remote_tmp=/tmp",
-        "-e ansible_python_interpreter=/usr/bin/python3.8",
+        "-e ansible_python_interpreter=/usr/bin/python3.9",
         "-vvv"
       ]
     }

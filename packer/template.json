@@ -27,7 +27,7 @@
     "sudo dnf install python3.11-pip -y",
     "sudo dnf install python3.11-devel -y"
   ]
-}
+},
     {
       "type": "ansible",
       "playbook_file": "project-code/packer/playbook.yml",

@@ -1,7 +1,4 @@
 {
-  "variables": {
-    "ssh-private-key" : ""
-  },
   "builders": [
     {
       "type": "amazon-ebs",

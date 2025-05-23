@@ -22,7 +22,10 @@
     {
       "type": "ansible",
       "playbook_file": "project-code/packer/playbook.yml",
-      "remote_tmp": "/tmp/"
+      "extra_arguments": [
+        "-e ansible_remote_tmp=/tmp",
+        "-vvv"
+      ]
     }
   ]
 }

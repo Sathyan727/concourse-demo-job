@@ -23,11 +23,10 @@ jobs:
       run:
         path: sh
         args:
-        - -exc
+        - -c
         - |
-          cd project-code/packer
           packer plugins install github.com/hashicorp/amazon
-          packer validate template.json
+          packer validate project-code/template.json
   - task: build-ami
     config:
       platform: linux
@@ -41,10 +40,9 @@ jobs:
       run:
         path: sh
         args:
-        - -exc
+        - -c
         - |
-          cd project-code/packer
-          packer build -var 'aws_access_key=${AWS_ACCESS_KEY}' -var 'aws_secret_key=${AWS_SECRET_KEY}' template.json
+          packer build -var 'aws_access_key=${AWS_ACCESS_KEY}' -var 'aws_secret_key=${AWS_SECRET_KEY}' project-code/template.json
  
 - name: provision-infra
   plan:

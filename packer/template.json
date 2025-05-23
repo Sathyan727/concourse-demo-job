@@ -22,9 +22,15 @@
 {
   "type": "shell",
   "inline": [
-    "sudo amazon-linux-extras install python3.9 -y",
-    "sudo alternatives --set python3 /usr/bin/python3.9",
-    "sudo ln -sf /usr/bin/python3.9 /usr/bin/python3"
+    "sudo yum groupinstall -y 'Development Tools'",
+    "sudo yum install -y zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel libffi-devel xz-devel",
+    "curl -O https://www.python.org/ftp/python/3.9.19/Python-3.9.19.tar.xz",
+    "tar -xJf Python-3.9.19.tar.xz",
+    "cd Python-3.9.19",
+    "./configure --enable-optimizations",
+    "make -j$(nproc)",
+    "sudo make altinstall",
+    "sudo ln -sf /usr/local/bin/python3.9 /usr/bin/python3"
   ],
   "execute_command": "sudo {{.Path}}"
 },
@@ -33,7 +39,7 @@
       "playbook_file": "project-code/packer/playbook.yml",
       "extra_arguments": [
         "-e ansible_remote_tmp=/tmp",
-        "-e ansible_python_interpreter=/usr/bin/python3.9",
+        "-e ansible_python_interpreter=/usr/bin/python3",
         "-vvv"
       ]
     }

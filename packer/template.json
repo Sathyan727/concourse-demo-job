@@ -1,7 +1,8 @@
 {
   "variables":{
     "access_key": "{{user `aws_access_key`}}",
-    "secret_key": "{{user `aws_secret_key`}}"
+    "secret_key": "{{user `aws_secret_key`}}",
+    "ssh_private_key" : "{user `ssh_private_key`}}"
    },
   "builders": [
     {
@@ -21,9 +22,14 @@
 {
       "type": "shell",
       "inline": [
-        "chmod 400 /tmp/mykpar.pem",
-        "ANSIBLE_REMOTE_TMP=/tmp/.ansible/tmp /root/.local/bin/ansible-playbook -i 'localhost,' --connection=local -u {{user `ssh_username`}} /packer-source/project-code/playbook.yml"
+        "echo $SSH_PRIVATE_KEY | base64 -d > /tmp/temp-key.pem",
+        "chmod 400 /tmp/temp-key.pem",
+        "ANSIBLE_REMOTE_TMP=/tmp/.ansible/tmp /root/.local/bin/ansible-playbook -i 'localhost,' --connection=local -u {{user `ssh_username`}} /packer-source/project-code/playbook.yml",
+        "rm -f /tmp/temp-key.pem"
+      ],
+      "environment_vars": [
+        "SSH_PRIVATE_KEY={{user `ssh_private_key`}}"
       ]
-    }	
+    }
   ]
 }

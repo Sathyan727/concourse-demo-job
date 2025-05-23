@@ -22,7 +22,8 @@
 {
       "type": "shell",
       "inline": [
-        "ANSIBLE_REMOTE_TMP=/tmp/.ansible/tmp /usr/local/bin/ansible-playbook -i 'localhost,' --connection=local -u {{user `ssh_username`}} /packer-source/project-code/playbook.yml"
+        "sudo chmod 777 -R /root/.local/bin",
+        "ANSIBLE_REMOTE_TMP=/tmp/.ansible/tmp /root/.local/bin/ansible-playbook -i 'localhost,' --connection=local -u {{user `ssh_username`}} /packer-source/project-code/playbook.yml"
       ]
     }
   ]

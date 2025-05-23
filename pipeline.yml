@@ -30,7 +30,7 @@ jobs:
         - -c
         - |
           echo "$SSH_PRIVATE_KEY" | base64 -d > /tmp/mykpar.pem
-          apk add --no-cache python3 py3-pip
+          apk add --no-cache python3 py3-pip jq openssh-client
           pip3 install --user --break-system-packages ansible
           export PATH="$PATH:/root/.local/bin"
           ansible-playbook --version || { echo "Ansible installation failed"; exit 1; }

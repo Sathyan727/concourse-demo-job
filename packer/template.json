@@ -19,21 +19,12 @@
     }
   ],
   "provisioners": [
-{
-  "type": "shell",
-  "inline": [
-    "sudo dnf update -y",
-    "sudo dnf install python3.11 -y",
-    "sudo dnf install python3.11-pip -y",
-    "sudo dnf install python3.11-devel -y"
-  ]
-},
     {
       "type": "ansible",
       "playbook_file": "project-code/packer/playbook.yml",
       "extra_arguments": [
         "-e ansible_remote_tmp=/tmp",
-        "-e ansible_python_interpreter=/usr/bin/python3.11",
+        "-e ansible_python_interpreter=/usr/bin/python3",
         "-vvv"
       ]
     }
